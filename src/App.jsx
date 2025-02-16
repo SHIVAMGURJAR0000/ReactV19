@@ -4,12 +4,7 @@ import React from 'react'
 
 export const App=()=>{
 
-return (
-  <React.Fragment>
-   <NetflixSeries/>
-  
- </React.Fragment>
-);
+return <NetflixSeries/>
 }
 
 
