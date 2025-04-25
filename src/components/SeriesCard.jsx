@@ -1,13 +1,17 @@
 import styles from "./Netflix.module.css"; // we can name anything in place of style
+import styled from "styled-components";
 
 export const SeriesCard=({data})=>{
   
 
-    // CSS Modules are very popular because they automatically make class and animation names unique so you don't have to worry about selector name collisions.
+    
 
  const{id, img_url, name, rating, description, cast, genre, watch_url}= data;
  
-    const btn_style=  {
+    // const btn_style = {};
+    //styled component
+    //two ways through object or literals (i like object way)
+        const ButtonShivam = styled.button({
         padding:"1.2rem 2.4rem",
         border: "none",
         fontSize:"1.6rem",
@@ -15,8 +19,8 @@ export const SeriesCard=({data})=>{
         color:"var(--btn-color)",
         fontWeight: "bold",
         cursor: "pointer",
-
-    }
+        });
+    
 
     const ratingClass = rating>=8.5?styles.super_hit: styles.average;
     return (
@@ -26,8 +30,7 @@ export const SeriesCard=({data})=>{
         </div>
 
         <div className={styles["card-content"]}> 
-            {/* important we are using module and card-content is the property of styles but we cant use styles.card-content because js think card , -, content as diffent thing */}
-            {/* so we use style["card-content"] */}
+           
         <h2>Name: {name}</h2>
       
         <h3>Rating: <span className={`${styles.rating} ${ratingClass}`}>{rating}</span> </h3>
@@ -37,9 +40,10 @@ export const SeriesCard=({data})=>{
         <p >Caste: {cast}</p>
       
         <a href={watch_url} target='_blank'>
-            <button style={
+            {/* <button style={
               btn_style
-            }>Watch Now</button>
+            }>Watch Now</button> */}
+            <ButtonShivam>Watch</ButtonShivam>
         </a>
         </div>
        
