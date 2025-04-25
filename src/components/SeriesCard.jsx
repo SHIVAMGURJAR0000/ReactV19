@@ -1,16 +1,15 @@
-import styles from "./Netflix.module.css"; // we can name anything in place of style
+import styles from "./Netflix.module.css"; 
 import styled from "styled-components";
 
 export const SeriesCard=({data})=>{
-  
+  // Tailwind
+  // go to website ans set  https://v3.tailwindcss.com/docs/guides/vite
 
     
 
  const{id, img_url, name, rating, description, cast, genre, watch_url}= data;
  
-    // const btn_style = {};
-    //styled component
-    //two ways through object or literals (i like object way)
+   
         const ButtonShivam = styled.button({
         padding:"1.2rem 2.4rem",
         border: "none",
@@ -35,14 +34,12 @@ export const SeriesCard=({data})=>{
       
         <h3>Rating: <span className={`${styles.rating} ${ratingClass}`}>{rating}</span> </h3>
        
-        <p >Summary:{description} </p>
+        <p className="text-3xl font-bold underline" >Summary:{description} </p>
         <p >Genere: {genre}</p>
         <p >Caste: {cast}</p>
       
         <a href={watch_url} target='_blank'>
-            {/* <button style={
-              btn_style
-            }>Watch Now</button> */}
+            
             <ButtonShivam>Watch</ButtonShivam>
         </a>
         </div>
