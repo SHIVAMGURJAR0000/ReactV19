@@ -1,11 +1,9 @@
+import styles from "./Netflix.module.css"; // we can name anything in place of style
+
 export const SeriesCard=({data})=>{
   
 
-    
-    // summary
-    //1. to use contion in class use templeate literal.
-    //2. You can use class's with condtion.
-    //3. If you using inline style and using object for styling then use template literal for styling.
+    // CSS Modules are very popular because they automatically make class and animation names unique so you don't have to worry about selector name collisions.
 
  const{id, img_url, name, rating, description, cast, genre, watch_url}= data;
  
@@ -20,24 +18,24 @@ export const SeriesCard=({data})=>{
 
     }
 
-    const ratingClass = rating>=8.5?"super_hit": "average";
+    const ratingClass = rating>=8.5?styles.super_hit: styles.average;
     return (
-    <li className="card" key={id}>
+    <li className={styles.card} key={id}>
         <div>
             <img src={img_url} alt={name} width="40%" height="40%" />
         </div>
 
-        <div className="card-content" >
+        <div className={styles["card-content"]}> 
+            {/* important we are using module and card-content is the property of styles but we cant use styles.card-content because js think card , -, content as diffent thing */}
+            {/* so we use style["card-content"] */}
         <h2>Name: {name}</h2>
-        {/* with conditional expression we can write more thatn one class using string literals */}
-        {/* This piece of code will render everythime and look uneasy to eyes */}
-        {/* <h3>Rating: <span className={`rating ${rating>=8.5?"super_hit":"average"}`}>{rating}</span> </h3> */}
-        <h3>Rating: <span className={`rating ${ratingClass}`}>{rating}</span> </h3>
+      
+        <h3>Rating: <span className={`${styles.rating} ${ratingClass}`}>{rating}</span> </h3>
        
         <p >Summary:{description} </p>
         <p >Genere: {genre}</p>
         <p >Caste: {cast}</p>
-        {/* For button we used inlien styling btn_style which is object then how can we apply condition here */}
+      
         <a href={watch_url} target='_blank'>
             <button style={
               btn_style
