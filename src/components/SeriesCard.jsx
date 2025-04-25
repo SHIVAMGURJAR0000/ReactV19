@@ -1,16 +1,26 @@
 export const SeriesCard=({data})=>{
-    // ADD CSS
+  
+
+    
+    // summary
+    //1. to use contion in class use templeate literal.
+    //2. You can use class's with condtion.
+    //3. If you using inline style and using object for styling then use template literal for styling.
 
  const{id, img_url, name, rating, description, cast, genre, watch_url}= data;
- //create outside to increase redialblity and here it not reload again and again at everly reload(out of render every time)
+ 
     const btn_style=  {
         padding:"1.2rem 2.4rem",
         border: "none",
         fontSize:"1.6rem",
-        backgroundColor:"var(--btn-hover-bg-color)",
-        color:"var(--white-color)",
+        backgroundColor:`${rating>=8.5? "#7dcea0":"#f7dc6f"}`,
+        color:"var(--btn-color)",
+        fontWeight: "bold",
+        cursor: "pointer",
 
     }
+
+    const ratingClass = rating>=8.5?"super_hit": "average";
     return (
     <li className="card" key={id}>
         <div>
@@ -19,18 +29,15 @@ export const SeriesCard=({data})=>{
 
         <div className="card-content" >
         <h2>Name: {name}</h2>
-        <h3>Rating: {rating}</h3>
-        {/* <p style={
-            // outer bracket means enter into js
-            // now this beacket treat css as object
-            //if we put this style in every element then we are repeating ourself so use flex in container
-            {
-                margin:"1.2rem 0"
-            }
-        }>Summary:{description} </p> */}
+        {/* with conditional expression we can write more thatn one class using string literals */}
+        {/* This piece of code will render everythime and look uneasy to eyes */}
+        {/* <h3>Rating: <span className={`rating ${rating>=8.5?"super_hit":"average"}`}>{rating}</span> </h3> */}
+        <h3>Rating: <span className={`rating ${ratingClass}`}>{rating}</span> </h3>
+       
         <p >Summary:{description} </p>
         <p >Genere: {genre}</p>
         <p >Caste: {cast}</p>
+        {/* For button we used inlien styling btn_style which is object then how can we apply condition here */}
         <a href={watch_url} target='_blank'>
             <button style={
               btn_style
