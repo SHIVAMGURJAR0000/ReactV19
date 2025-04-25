@@ -2,15 +2,9 @@ import styles from "./Netflix.module.css";
 import styled from "styled-components";
 
 export const SeriesCard=({data})=>{
-  // Tailwind
-  // go to website ans set  https://v3.tailwindcss.com/docs/guides/vite
 
-    
-
- const{id, img_url, name, rating, description, cast, genre, watch_url}= data;
- 
-   
-        const ButtonShivam = styled.button({
+ const{id, img_url, name, rating, description, cast, genre, watch_url}= data;  
+ const ButtonShivam = styled.button({
         padding:"1.2rem 2.4rem",
         border: "none",
         fontSize:"1.6rem",
@@ -18,7 +12,7 @@ export const SeriesCard=({data})=>{
         color:"var(--btn-color)",
         fontWeight: "bold",
         cursor: "pointer",
-        });
+    });
     
 
     const ratingClass = rating>=8.5?styles.super_hit: styles.average;
