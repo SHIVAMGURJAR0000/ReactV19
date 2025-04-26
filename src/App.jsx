@@ -6,7 +6,7 @@ import React from "react";
 
 export const App = () => {
   return (
-    //React State
+    //Derived State
     <section className="container">
       {/* <State /> */}
       <DerivedState />
@@ -14,6 +14,6 @@ export const App = () => {
   );
 };
 
-// state is a object htat hold the data about the component. state is like variable here
-// if state value changes then the componenet re render to reflect these change
-// state is dynamic and mutable
+// what is DerivedState
+
+// It is a type of state which is calculated based on the other state and props
