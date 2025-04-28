@@ -28,30 +28,16 @@ export const Todo = () => {
     setInputValue("");
   };
 
-  //when we are using timeInterval then state is channging every 1 sec means this component will re-render after every one second.
-  // so clear time interval every time and we should clear it to avoid memory leak.
-  // (This is why we use useEffect with a cleanup function.)
-  // this hey will run on every render
-  console.log("Hey");
+  // console.log("Hey");
 
   //todo Date and Time
   const getDateTime = () => {
-    // Without useState we get error we can't access fromattedDate and formatted time
-    //because they are not constant
-    // because otherwise the values would reset on every render.
     const now = new Date();
     const formattedDate = now.toLocaleDateString();
     const formattedTime = now.toLocaleTimeString();
     setDateTime(`${formattedDate}-${formattedTime}`);
   };
 
-  //Run after every one second
-
-  // const interval = setInterval(() => {
-  //   getDateTime();
-  // }, 1000);
-
-  //using useEffect React function to avoid memory leak.
   useEffect(() => {
     const interval = setInterval(() => {
       getDateTime();
@@ -59,6 +45,53 @@ export const Todo = () => {
 
     return () => clearInterval(interval);
   }, []);
+
+  // This code is written by me.
+  //In this we are deleting the element of the array.
+  // lets say we have arr = ["mango", "apple"].
+  // delete arr[0] // mango element will be deleted
+  // arr = [undefined, "apple"];
+  // so this didnt work here.
+  // const handleDelete = (index) => {
+  //   console.log(task);
+
+  //   console.log(task[index]);
+  //   delete task[index];
+  //   task;
+  // };
+
+  // working done by me manual method
+  // const handleDelete = (index) => {
+  //   let givenword = task[index];
+  //   for (let i = 0; i < task.length - 1; i++) {
+  //     if (task[i] == givenword) {
+  //       task[i] = task[i + 1];
+  //     }
+  //   }
+  //   task.pop();
+  //   setTask([...task]);
+  // };
+
+  //todo handleDeleteToDO
+
+  const handleDeleteToDo = (value) => {
+    console.log(task);
+    console.log(value);
+    //filter return the value which satisfy the defined condition
+    // example arr = ["apple", "mango", "pine"];
+    // value = "mango"
+    // filter((curTask) => curTask === value;
+    // return new array arrnew = ["mango"];  // new array formed
+    // so use curTask !== value;
+    const updatedTask = task.filter((curTask) => curTask !== value);
+    setTask(updatedTask);
+  };
+
+  // todo handleClearToDoData
+
+  const handleClearToDoData = () => {
+    setTask([]);
+  };
 
   return (
     <section className="todo-container">
@@ -94,13 +127,22 @@ export const Todo = () => {
                 <button className="check-btn">
                   <FaCheckCircle />
                 </button>
-                <button className="delete-btn">
+                <button
+                  className="delete-btn"
+                  onClick={(e) => {
+                    handleDeleteToDo(curTask);
+                  }}
+                >
                   <MdDeleteForever />
                 </button>
               </li>
             );
           })}
         </ul>
+      </section>
+
+      <section className="clear-btn" onClick={handleClearToDoData}>
+        Clear All
       </section>
     </section>
   );
