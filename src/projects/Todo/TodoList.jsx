@@ -1,11 +1,21 @@
 import { FaCheckCircle } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
 
-export const TodoList = ({ key, data, onHandleDeleteTodo }) => {
+export const TodoList = ({
+  data,
+  onHandleDeleteTodo,
+  onHandleChedkedTodo,
+  checked,
+}) => {
   return (
-    <li key={key} className="todo-item">
-      <span>{data}</span>
-      <button className="check-btn">
+    <li className="todo-item">
+      <span className={checked ? "checkList" : "notCheckedList"}>{data}</span>
+      <button
+        className="check-btn"
+        onClick={() => {
+          onHandleChedkedTodo(data);
+        }}
+      >
         <FaCheckCircle />
       </button>
       <button

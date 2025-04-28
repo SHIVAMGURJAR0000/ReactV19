@@ -7,6 +7,8 @@ import { Todo } from "./projects/Todo/Todo";
 export const App = () => {
   return (
     // project 2 continue
+    //using id in this code
+    //important commit
     <section>
       <Todo />
     </section>
