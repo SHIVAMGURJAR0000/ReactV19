@@ -6,7 +6,7 @@ import { Todo } from "./projects/Todo/Todo";
 
 export const App = () => {
   return (
-    // project 2
+    // project 2 continue
     <section>
       <Todo />
     </section>
