@@ -4,23 +4,19 @@ import { TodoDate } from "./TodoDate";
 
 import { TodoForm } from "./TodoForm";
 import { TodoList } from "./TodoList";
+import {
+  getLocalStorgeTodoData,
+  setLocalStorgeTodoData,
+} from "./TodoLocalStorage";
 
 export const Todo = () => {
-  const [task, setTask] = useState([]);
+  const [task, setTask] = useState(() => getLocalStorgeTodoData());
 
   const handleFormSubmit = (inputValue) => {
     const { id, content, checked } = inputValue;
 
     //To check the input field empty or not
     if (!content) return;
-    //To check if the data is already existing or not
-    //here previous logic is work for arr.
-    //now we have array of object.
-    //so we cant ust this include method now
-    // if (task.includes(inputValue.content)) return;
-
-    //new way to check if the data is already existing or not
-
     const ifTodoContentMatched = task.find(
       (curTask) => curTask.content === content
     );
@@ -31,6 +27,8 @@ export const Todo = () => {
       { id: id, content: content, checked: checked },
     ]);
   };
+
+  setLocalStorgeTodoData(task);
 
   //Todo HandleDeleteTodo
   const handleDeleteToDo = (value) => {
@@ -72,7 +70,7 @@ export const Todo = () => {
           {task.map((curTask) => {
             return (
               <TodoList
-                Key={curTask.id}
+                key={curTask.id}
                 data={curTask.content}
                 onHandleDeleteTodo={handleDeleteToDo}
                 checked={curTask.checked}
