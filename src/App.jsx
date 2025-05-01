@@ -1,13 +1,11 @@
 import React from "react";
-import { Todo } from "./projects/Todo/Todo";
+import { Keys } from "./components/keys";
 
 export const App = () => {
   return (
-    // project 2 continue
-    //local storage
-    //for the production run bun run build
+    //keys in react js
     <section>
-      <Todo />
+      <Keys />
     </section>
   );
 };
