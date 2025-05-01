@@ -5,6 +5,7 @@ export const App = () => {
   return (
     // project 2 continue
     //local storage
+    //for the production run bun run build
     <section>
       <Todo />
     </section>
