@@ -1,32 +1,17 @@
 import React from "react";
-import { Keys } from "./components/keys";
+// import { Counter } from "./components/hooks/useState";
+import { UseEffectChanllenge } from "./components/hooks/useState/challenge";
 
 export const App = () => {
-  return (
-    //Short circuit evalutaion in react js
-    //code writing is remaining
-    <section>
-      <Keys />
-    </section>
-  );
+  //UseState hook + useState challenge
+  return <UseEffectChanllenge />;
 };
 
-// short circuit is a technique used in js where expression are evaluated from left to right
-//logical or
-//expr1 ||expr 2
-// ex: result = false || "hello" // hello
-//  result = true||"world"  //true
+//Theory
 
-//and
-// ex : exp1 = true&&"hello"//hello
-// exp2= fasle&&"world" //false
-
-// NUllish Coalescing(??)
-
-// synatx  expr1??exp2
-
-// result = null??"hello" // hello
-
-// result = undefined??"world" // world
-
-// result = ''??"Fallback" //''
+// 1) let you use different React features from your componenets.
+// 2) useState, useEffects, useContext, useReducer or more.
+// 3) only be used at the top level of your top level compnonent.
+// 4) Do not call hooks inside loops , conditions, or nested functions.
+// 5) Hooks can not be use in regular js and not in class also , only use in fucntion based components.
+// 6) we can create our own custom hooks buy using use+functionName (ex => useFetch, useShivam)
