@@ -8,6 +8,10 @@ export const ReactUseEffect = () => {
       // first time when this component run then this will be called.
     }, []);*/
 
+  useEffect(() => {
+    document.title = `count: ${count}`;
+  }, [count]);
+
   //example 2
   useEffect(() => {
     console.log("Count value :", count); // this will run one time when the component run first time
