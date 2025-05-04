@@ -2,9 +2,9 @@ import "./Pokemon.css";
 import { useState, useEffect } from "react";
 
 export const HowNotToFetchApi = () => {
-  // const [pokemon, setpokemon] = useState([]);
   const [pokemon, setpokemon] = useState(null);
-  //   without using useEffeect  fetch run infinite loop becasue of usestate
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     // fetch("https://jsonplaceholder.typicode.com/posts")
@@ -12,13 +12,16 @@ export const HowNotToFetchApi = () => {
       .then((res) => res.json())
       .then((data) => {
         setpokemon(data);
+        setLoading(false);
       })
       .catch((error) => {
         console.log(error);
+        setError(error);
+        setLoading(false);
       });
   }, []);
 
-  if (!pokemon) {
+  if (loading) {
     return (
       <div>
         <h1>Loading........</h1>
@@ -26,7 +29,13 @@ export const HowNotToFetchApi = () => {
     );
   }
 
-  // when we will get data then render this component
+  if (error) {
+    return (
+      <div>
+        <h1>Error: {error.message}</h1>
+      </div>
+    );
+  }
 
   return (
     // <div className="container effect-container">
