@@ -1,7 +1,7 @@
 import React from "react";
-import { CleanUp } from "./components/hooks/useEffect/Cleanup";
+
+import { HowNotToFetchApi } from "./components/hooks/useEffect/HowNotToFetchApi";
 
 export const App = () => {
-  //  useEffect hook
-  return <CleanUp />;
+  return <HowNotToFetchApi />;
 };
