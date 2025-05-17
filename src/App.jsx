@@ -1,11 +1,13 @@
-import { UseRef } from "./components/hooks/useRef";
+import { ForwardRef } from "./components/hooks/useRef/forwardRef";
 
 export const App = () => {
-  //useRef Hook
-  return <UseRef />;
+  // Forward ref
+  return <ForwardRef />;
 };
 
-// useRef is a React hook htat lets you reference a value that is not nedded for rendering.
-// its directly mutable and does not cause re-renders when changed.
-// you can access value of its using yourRef.current
-// use for uncontrolled componenets
+// It allows parent components to move down (or forward) refs to child components.
+// useRef is only used for uncontrolled components.
+// pass data to parent to child componnet. no re rendering.
+//syntax : React.forwaredRef(props, ref) =>{}).
+// But in react 19 we dont use forward red.
+// in react 19 we can directly send refs using props.
