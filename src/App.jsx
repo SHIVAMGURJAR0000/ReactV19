@@ -2,7 +2,7 @@ import { BioProvider } from "./components/hooks/ContextApi";
 import { Home } from "./components/hooks/ContextApi/Home";
 
 export const App = () => {
-  // useContext rule in react
+  //Create Custom Hooks
   return (
     <BioProvider>
       <Home />;
@@ -10,5 +10,12 @@ export const App = () => {
   );
 };
 
-// Rule
-// 1. only children of the cointext provider can access the data of context.
+// Custom Hooks in React
+// Do not repeat yourself
+
+//Rules to create Custom Hooks
+
+// 1) prefix with use
+// 2) Use Built-in Hooks
+// 3) Avoid Side Effects outside the Custom hooks
+// 4) keep Hooks pure
