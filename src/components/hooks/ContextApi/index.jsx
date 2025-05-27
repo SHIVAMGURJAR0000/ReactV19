@@ -1,4 +1,4 @@
-import { createContext, useContext } from "react";
+import { createContext, use } from "react";
 
 //step1
 //Creating context
@@ -23,11 +23,13 @@ export const BioProvider = ({ children }) => {
 /// Custom Hooks
 
 export const useBioContext = () => {
-  const context = useContext(BioContext);
+  // const context = useContext(BioContext);
+  const context = use(BioContext);
 
   if (context === undefined) {
     throw new Error("Componenet must be wrapped with bio provider");
   }
+
   console.log(context);
   return context;
 };

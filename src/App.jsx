@@ -2,7 +2,6 @@ import { BioProvider } from "./components/hooks/ContextApi";
 import { Home } from "./components/hooks/ContextApi/Home";
 
 export const App = () => {
-  //Create Custom Hooks
   return (
     <BioProvider>
       <Home />;
@@ -10,12 +9,12 @@ export const App = () => {
   );
 };
 
-// Custom Hooks in React
-// Do not repeat yourself
+// New "use" Hook in react 19
 
-//Rules to create Custom Hooks
+// it is a react api
 
-// 1) prefix with use
-// 2) Use Built-in Hooks
-// 3) Avoid Side Effects outside the Custom hooks
-// 4) keep Hooks pure
+// dont use useContext use "use" hook
+
+// when context is passed to a component , it will similar to usecontext
+
+// advantage : you can use inside condition like if , else , switch case,
