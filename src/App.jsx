@@ -10,6 +10,8 @@ export const App = () => {
   );
 };
 
+/// BEST PRACTICE
+
 // Use Reducer next branch
 // Theory
 // syntax: const [state, dispatch] = useReducer(reducer, initalState)
