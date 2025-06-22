@@ -1,4 +1,5 @@
 import { BioProvider } from "./components/hooks/ContextApi";
+import { ReactMemo } from "./components/hooks/Memo/ReactMemo";
 // import { Home } from "./components/hooks/ContextApi/Home";
 // import { ReactMemo } from "./components/hooks/Memo/ReactMemo";
 import MemoParentComponent from "./components/hooks/Memo/UseMemo";
@@ -7,10 +8,14 @@ import MemoParentComponent from "./components/hooks/Memo/UseMemo";
 export const App = () => {
   return (
     <BioProvider>
-      <MemoParentComponent />;
+      {/* <MemoParentComponent />; */}
+      <ReactMemo />
+      {/* import for this  */}
     </BioProvider>
   );
 };
+
+// React.memo vs useMemo
 
 ///  use memo
 // const memoizedValue = useMemo(()=>{
@@ -24,3 +29,4 @@ export const App = () => {
 // usefull for optimizing performance in situation where calculations or operation are computationally expensive.
 // Overusing useMemo might lead to unnecessary complexity and impact readability.
 // it work for values , i function optimization then use useCallback
+// Important use useMemo with values and objects.
